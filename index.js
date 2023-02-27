@@ -35,17 +35,7 @@ const managers = [
         name: 'office',
         message: "What's your manager's office number?",
     },
-    {
-        type: 'list',
-        name: 'menu',
-        message: "What would you like to do next?",
-        choices: [
-            'Add a manager',
-            'Add an engineer',
-            'Add an intern',
-            'Finish building the team',
-        ]
-    }
+    menu(),
 ]
 
 
@@ -70,17 +60,7 @@ const engineers = [
         name: 'github',
         message: "What's your engineer's Github account url?",
     },
-    {
-        type: 'list',
-        name: 'menu',
-        message: "What would you like to do next?",
-        choices: [
-            'Add a manager',
-            'Add an engineer',
-            'Add an intern',
-            'Finish building the team',
-        ]
-    }
+    menu(),
 ]
 
 const interns = [
@@ -104,18 +84,7 @@ const interns = [
         name: 'school',
         message: "What School did this intern attend?",
     },
-    {
-        type: 'list',
-        name: 'menu',
-        message: "What would you like to do next?",
-        choices: [
-            'Add a manager',
-            'Add an engineer',
-            'Add an intern',
-            'Finish building the team',
-        ]
-    }
-
+    menu(),
 ]
 
 const addManagers = () => {
@@ -167,7 +136,7 @@ function menuChoices(choice) {
 }
 
 function menu() {
-    return `
+    let obj = 
     {
         type: 'list',
         name: 'menu',
@@ -179,7 +148,8 @@ function menu() {
             'Finish building the team',
         ]
     }
-    `
+
+    return obj;
 }
 
 addManagers();
