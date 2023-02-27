@@ -106,12 +106,7 @@ const interns = [
 
 const addManagers = () => {
     inquirer.prompt(managers).then((answers) => {
-        let manager = new Manager();
-
-        manager.setName = answers.name;
-        manager.setId = answers.id;
-        manager.setEmail = answers.email;
-        manager.setOfficeNumber = answers.office;
+        let manager = new Manager(answers.name, answers.id, answers.email, answers.office);
 
         team.push(manager);
 
@@ -125,17 +120,12 @@ const addManagers = () => {
 
 const addEngineers = () => {
     inquirer.prompt(engineers).then((answers) => {
-        let engineer = new Engineer();
-
-        engineer.setName = answers.name;
-        engineer.setId = answers.id;
-        engineer.setEmail = answers.email;
-        engineer.setGithub = answers.github;
+        let engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
 
         team.push(engineer);
 
       if (answers.addAnotherEngineer) {
-        console.log(team);
+        addEngineers();
       } else {
         addInterns();
       }
@@ -144,17 +134,12 @@ const addEngineers = () => {
 
 const addInterns = () => {
     inquirer.prompt(interns).then((answers) => {
-        let intern = new Intern();
-
-        intern.setName = answers.name;
-        intern.setId = answers.id;
-        intern.setEmail = answers.email;
-        intern.setSchool = answers.github;
+        let intern = new Intern(answers.name, answers.id, answers.email, answers.school);
 
         team.push(intern);
 
-      if (answers.addAnotherEngineer) {
-        addEngineers();
+      if (answers.addAnotherIntern) {
+        addInterns();
       } else {
         startProgram();
       }
