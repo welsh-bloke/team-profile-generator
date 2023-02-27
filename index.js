@@ -17,8 +17,16 @@ let team = [];
 
 // fs.writeFile did not work for me - threw error
 // used fs.writeFileSync instead
+
+let manager = new Manager();
+
+manager.setName = 'Mark Smith';
+manager.setId = 1;
+manager.setEmail = 'mark@test.com';
+manager.setOfficeNumber = '04454 123456';
+
 async function startProgram() {
-    team.push(new Manager('Mark Smith', 1, 'mark@test.com', '04454 123456'))
+    team.push(manager)
     team.push(new Engineer('Sue Jones', 2, 'sue@test.com', 'https://github.com/welsh-bloke'))
     team.push(new Intern('Paul Davies', 3, 'paul@test.com', 'Duffryn High School'))
     let htmlDoc = render(team)
