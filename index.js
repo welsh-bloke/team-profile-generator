@@ -1,5 +1,6 @@
 
-const Employee = require("./lib/Employee");const Manager = require("./lib/Manager");
+const Employee = require("./lib/Employee");
+const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
@@ -11,17 +12,18 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./src/page-template.js");
 
-let Mike = new Employee
-let Steve = new Engineer
-let Jo = new Intern
-let Mark = new Manager
 
-console.log(Mike.getRole)
-console.log(Steve.getRole)
-console.log(Jo.getRole)
-console.log(Mark.getRole)
+let team = [];
 
+// fs.writeFile did not work for me - threw error
+// used fs.writeFileSync instead
+async function startProgram() {
+    team.push(new Manager('Mark Smith', 1, 'mark@test.com', '04454 123456'))
+    team.push(new Engineer('Sue Jones', 2, 'sue@test.com', 'https://github.com/welsh-bloke'))
+    team.push(new Intern('Paul Davies', 3, 'paul@test.com', 'Duffryn High School'))
+    let htmlDoc = render(team)
+    console.log(outputPath)
+    await fs.writeFileSync(outputPath, htmlDoc)
+}
 
-// TODO: Write Code to gather information about the development team members, and render the HTML file.
-// Use inquirer to ask questions
-
+startProgram();
