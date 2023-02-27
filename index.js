@@ -36,13 +36,18 @@ const managers = [
         message: "What's your manager's office number?",
     },
     {
-        type: 'confirm',
-        name: 'addAnotherManager',
-        message: "Would you like to add another manager (type 'Y' for 'yes', or just hit enter for 'no)?",
-        default: false,
-    },
-
+        type: 'list',
+        name: 'menu',
+        message: "What would you like to do next?",
+        choices: [
+            'Add a manager',
+            'Add an engineer',
+            'Add an intern',
+            'Finish building the team',
+        ]
+    }
 ]
+
 
 const engineers = [
     {
@@ -66,12 +71,16 @@ const engineers = [
         message: "What's your engineer's Github account url?",
     },
     {
-        type: 'confirm',
-        name: 'addAnotherEngineer',
-        message: "Would you like to add another engineer (type 'Y' for 'yes', or just hit enter for 'no)?",
-        default: false,
-    },
-
+        type: 'list',
+        name: 'menu',
+        message: "What would you like to do next?",
+        choices: [
+            'Add a manager',
+            'Add an engineer',
+            'Add an intern',
+            'Finish building the team',
+        ]
+    }
 ]
 
 const interns = [
@@ -96,11 +105,16 @@ const interns = [
         message: "What School did this intern attend?",
     },
     {
-        type: 'confirm',
-        name: 'addAnotherIntern',
-        message: "Would you like to add another intern (type 'Y' for 'yes', or just hit enter for 'no)?",
-        default: false,
-    },
+        type: 'list',
+        name: 'menu',
+        message: "What would you like to do next?",
+        choices: [
+            'Add a manager',
+            'Add an engineer',
+            'Add an intern',
+            'Finish building the team',
+        ]
+    }
 
 ]
 
@@ -110,11 +124,7 @@ const addManagers = () => {
 
         team.push(manager);
 
-      if (answers.addAnotherManager) {
-        addManagers();
-      } else {
-        addEngineers();
-      }
+        menuChoices(answers.menu)
     });
 }
 
@@ -124,11 +134,7 @@ const addEngineers = () => {
 
         team.push(engineer);
 
-      if (answers.addAnotherEngineer) {
-        addEngineers();
-      } else {
-        addInterns();
-      }
+        menuChoices(answers.menu)
     });
 }
 
@@ -138,12 +144,42 @@ const addInterns = () => {
 
         team.push(intern);
 
-      if (answers.addAnotherIntern) {
-        addInterns();
-      } else {
-        startProgram();
-      }
+        menuChoices(answers.menu)
     });
+}
+
+function menuChoices(choice) {
+    const expr = choice
+    switch(choice) {
+        case 'Add a manager':
+            return addManagers();
+            break;
+        case 'Add an engineer':
+            return addEngineers();
+            break;
+        case 'Add an intern':
+            return addInterns();
+            break;
+        case 'Finish building the team':
+            return startProgram();
+            break;
+    }
+}
+
+function menu() {
+    return `
+    {
+        type: 'list',
+        name: 'menu',
+        message: "What would you like to do next?",
+        choices: [
+            'Add a manager',
+            'Add an engineer',
+            'Add an intern',
+            'Finish building the team',
+        ]
+    }
+    `
 }
 
 addManagers();
