@@ -19,21 +19,33 @@ const managers = [
         type: 'input',
         name: 'name',
         message: "What's your manager's name?",
+        validate: val => val === "" ? (
+            emptyString()
+        ) : true
     },
     {
         type: 'input',
         name: 'id',
         message: "What's your manager's id?",
+        validate: val => val === "" ? (
+            emptyString()
+        ) : true
     },
     {
         type: 'input',
         name: 'email',
         message: "What's your manager's email?",
+        validate: val => val === "" ? (
+            emptyString()
+        ) : true
     },
     {
         type: 'input',
         name: 'office',
         message: "What's your manager's office number?",
+        validate: val => val === "" ? (
+            emptyString()
+        ) : true
     },
     menu(),
 ]
@@ -44,21 +56,33 @@ const engineers = [
         type: 'input',
         name: 'name',
         message: "What's your engineers's name?",
+        validate: val => val === "" ? (
+            emptyString()
+        ) : true
     },
     {
         type: 'input',
         name: 'id',
         message: "What's your engineers's id?",
+        validate: val => val === "" ? (
+            emptyString()
+        ) : true
     },
     {
         type: 'input',
         name: 'email',
         message: "What's your engineers's email?",
+        validate: val => val === "" ? (
+            emptyString()
+        ) : true
     },
     {
         type: 'input',
         name: 'github',
         message: "What's your engineer's Github account url?",
+        validate: val => val === "" ? (
+            emptyString()
+        ) : true
     },
     menu(),
 ]
@@ -68,21 +92,33 @@ const interns = [
         type: 'input',
         name: 'name',
         message: "What's your intern's name?",
+        validate: val => val === "" ? (
+            emptyString()
+        ) : true
     },
     {
         type: 'input',
         name: 'id',
         message: "What's your intern's id?",
+        validate: val => val === "" ? (
+            emptyString()
+        ) : true
     },
     {
         type: 'input',
         name: 'email',
         message: "What's your intern's email?",
+        validate: val => val === "" ? (
+            emptyString()
+        ) : true
     },
     {
         type: 'input',
         name: 'school',
         message: "What School did this intern attend?",
+        validate: val => val === "" ? (
+            emptyString()
+        ) : true
     },
     menu(),
 ]
@@ -150,6 +186,10 @@ function menu() {
     }
 
     return obj;
+}
+
+function emptyString() {
+    console.log('You must enter a value for this option.')
 }
 
 addManagers();
